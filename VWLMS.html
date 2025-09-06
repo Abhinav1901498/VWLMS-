@@ -1,4 +1,4 @@
-<!Doctype html>
+  <!doctype html>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -11,79 +11,148 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
-<body class="bg-white">
+<body class="bg-linear-to-tl from-blue-500 to-black-500">
+<!-- Navbar -->
+ <header class="flex justify-between items-center px-8 py-10 bg-white shadow-md">
+  <div class="text-2xl font-bold text-blue-700">VW LMS</div>
 
-  <!-- Navbar -->
-  <header class="flex items-center justify-between px-6 py-3 shadow-sm border-b">
-
-    <!-- Logo -->
-    <div class="flex items-center space-x-2">
-      <img src="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/wp-content/themes/vw-lms-education-courses-pro/assets/images/Logo.png" 
-           alt="VW LMS Logo" class="h-10">
+  <!-- Navigation -->
+  <nav class="hidden md:flex space-x-4 items-start">
+    <!-- Home + Buy Now -->
+    <div class="flex flex-col items-center">
+      <a href="#" class="text-2xl text-gray-700 hover:text-blue-600 font-bold">Home</a>
+      <!-- ✅ Buy Now button always below Home -->
+      <a target="_blank" 
+         href="https://www.vwthemes.com/cart/44875608948983:1" 
+         class="mt-10 mr-[-25px] px-4 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 font-bold">
+        Buy Now
+      </a>
     </div>
 
-    <!-- Center Menu -->
-    <nav class="hidden md:flex items-center space-x-8 font-semibold text-gray-800 relative">
+    <a href="#" class="text-2xl text-gray-700 hover:text-blue-600 font-bold">Courses</a>
 
-      <!-- Home + Buy Now -->
+    <!-- Categories Dropdown -->
+    <div class="relative">
+  <button id="categoryBtn" class="flex items-center text-2xl text-gray-700 hover:text-blue-600 font-bold focus:outline-none">
+    Categories
+    <!-- Triangle -->
+    <svg id="categoryArrow" class="w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <ul id="categoryList" class="absolute hidden bg-white shadow-md mt-2 rounded w-48">
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/course-category/business/?tutor-course-filter-category=16" class="block px-4 py-2 hover:bg-gray-100">Business</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/course-category/computer-science/?tutor-course-filter-category=21" class="block px-4 py-2 hover:bg-gray-100">Computer Science</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/course-category/data-science/?tutor-course-filter-category=27" class="block px-4 py-2 hover:bg-gray-100">Data Science</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/course-category/data-scientist/?tutor-course-filter-category=31" class="block px-4 py-2 hover:bg-gray-100">Data Scientist</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/course-category/development/?tutor-course-filter-category=25" class="block px-4 py-2 hover:bg-gray-100">Development</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/course-category/digital-marketing/?tutor-course-filter-category=28" class="block px-4 py-2 hover:bg-gray-100">Digital Marketing</a></li>
+  </ul>
+</div>
+
+<script>
+  const categoryBtn = document.getElementById('categoryBtn');
+  const categoryList = document.getElementById('categoryList');
+  const categoryArrow = document.getElementById('categoryArrow');
+
+  categoryBtn.addEventListener('click', () => {
+    categoryList.classList.toggle('hidden');
+    categoryArrow.classList.toggle('rotate-180'); // flips the triangle
+  });
+
+  // Optional: close dropdown if clicked outside
+  document.addEventListener('click', (e) => {
+    if (!categoryBtn.contains(e.target) && !categoryList.contains(e.target)) {
+      categoryList.classList.add('hidden');
+      categoryArrow.classList.remove('rotate-180');
+    }
+  });
+</script>
+
+    <!-- Pages Dropdown -->
+    <div class="relative">
+  <button id="pagesBtn" class="flex items-center text-2xl text-gray-700 hover:text-blue-600 font-bold focus:outline-none">
+    Pages
+    <!-- Triangle -->
+    <svg id="pagesArrow" class="w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <ul id="pagesList" class="absolute hidden bg-white shadow-md mt-2 rounded w-48">
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/about-us/" class="block px-4 py-2 hover:bg-gray-100">About Us</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/error-404/" class="block px-4 py-2 hover:bg-gray-100">404</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/event-listing/" class="block px-4 py-2 hover:bg-gray-100">Event</a></li>
+  </ul>
+</div>
+
+<script>
+  const pagesBtn = document.getElementById('pagesBtn');
+  const pagesList = document.getElementById('pagesList');
+  const pagesArrow = document.getElementById('pagesArrow');
+
+  pagesBtn.addEventListener('click', () => {
+    pagesList.classList.toggle('hidden');
+    pagesArrow.classList.toggle('rotate-180'); // rotates triangle
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener('click', (e) => {
+    if (!pagesBtn.contains(e.target) && !pagesList.contains(e.target)) {
+      pagesList.classList.add('hidden');
+      pagesArrow.classList.remove('rotate-180');
+    }
+  });
+</script>
+
     
-  <a href="#"class="text-black text-xl font-bold">Home</a>
-     
-     <div class="flex flex-col items-center">
-    <a href="https://www.vwthemes.com/themes/free-vw-lms-education-courses-wordpress-theme/" 
-     target="_blank" 
-     class="mt-30 bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-green-600 font-bold">
-    Buy Now</a>
-       </div>      
-        <a href="#" class="hover:text-blue-500 text-xl font-bold">Courses</a>
-      <!-- Categories Dropdown -->
-      <div class="group relative">
-        <button class="text-black hover:text-blue-500 flex items-center text-xl font-bold">
-          Categories <i class="fa-solid fa-caret-down ml-1 text-xs"></i>
-        </button>
-        <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 rounded-md w-48">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Business</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Computer Science</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Data Science</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Data Scientist</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Development</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Digital Marketing</a>
-        </div>
-      </div>
+    <!-- Blog Dropdown -->
+    <div class="relative">
+  <button id="blogBtn" class="flex items-center text-2xl text-gray-700 hover:text-blue-600 font-bold focus:outline-none">
+    Blog
+    <!-- Triangle -->
+    <svg id="blogArrow" class="w-4 h-4 ml-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
 
-      <!-- Pages Dropdown -->
-      <div class="group relative">
-        <button class="hover:text-blue-500 flex items-center text-xl font-bold">
-          Pages <i class="fa-solid fa-caret-down ml-1 text-xs"></i>
-        </button>
-        <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 rounded-md w-40">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">FAQ</a>
-        </div>
-      </div>
+  <ul id="blogList" class="absolute hidden bg-white shadow-md mt-2 rounded w-56">
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/blog/" class="block px-4 py-2 hover:bg-gray-100">Blog with No Sidebar</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/blog-left-sidebar/" class="block px-4 py-2 hover:bg-gray-100">Blog Left Sidebar</a></li>
+    <li><a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/blog-right-sidebar/" class="block px-4 py-2 hover:bg-gray-100">Blog Right Sidebar</a></li>
+  </ul>
+</div>
 
-      <!-- Blog Dropdown -->
-      <div class="group relative">
-        <button class="hover:text-blue-500 flex items-center text-xl font-bold">
-          Blog <i class="fa-solid fa-caret-down ml-1 text-xs"></i>
-        </button>
-        <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 rounded-md w-40">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Blog Grid</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Blog Details</a>
-        </div>
-      </div>
-    </nav>
+<script>
+  const blogBtn = document.getElementById('blogBtn');
+  const blogList = document.getElementById('blogList');
+  const blogArrow = document.getElementById('blogArrow');
 
-    <!-- Right Side -->
-    <div class="flex items-center space-x-6">
-      <i class="fas fa-search text-gray-800 cursor-pointer"></i>
-      <a href="#" class="font-semibold text-gray-800 hover:text-blue-500">Dashboard</a>
-      <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Register Now</a>
-    </div>
-  </header>
-</body>
+  blogBtn.addEventListener('click', () => {
+    blogList.classList.toggle('hidden');
+    blogArrow.classList.toggle('rotate-180'); // rotates the triangle
+  });
 
+  // Close dropdown if clicked outside
+  document.addEventListener('click', (e) => {
+    if (!blogBtn.contains(e.target) && !blogList.contains(e.target)) {
+      blogList.classList.add('hidden');
+      blogArrow.classList.remove('rotate-180');
+    }
+  });
+</script>
+</nav>
+
+  <!-- Right Side Buttons -->
+  <div class="space-x-3">
+    <a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/dashboard/"
+     class="px-4 py-4 bg-gray-200 rounded-full hover:bg-gray-300 text-xl font-bold">🔍 Dashboard</a>
+    <a href="https://preview.vwthemesdemo.com/vw-lms-education-courses-pro/student-registration-new/" 
+        target="_blank"
+    class="px-4 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 text-xl font-bold">Register Now</a>
+  </div>
+</header>
 
 <!-- Hero Section -->
 <article>
